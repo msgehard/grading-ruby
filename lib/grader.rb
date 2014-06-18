@@ -20,4 +20,22 @@ class Grader
 
     results
   end
+
+  def trend(entries)
+    consecutive_down = 0
+
+    entries.each do |entry|
+      if entry == :down
+        consecutive_down +=1
+      elsif entry == :up
+        consecutive_down = 0
+      end
+    end
+
+    if consecutive_down >=3
+      "in decline"
+    else
+      "not in decline"
+    end
+  end
 end
