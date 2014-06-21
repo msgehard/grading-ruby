@@ -1,24 +1,15 @@
 class Grader
   def translate(grades)
-    last_grade = grades.first
-    remaining_grades = grades[1..-1]
-
-    results = []
-    remaining_grades.each do |grade|
-
-      results << case
-                   when grade > last_grade
-                     :up
-                   when grade < last_grade
-                     :down
-                   else
-                     :even
-                 end
-
-      last_grade = grade
+    grades.each_cons(2).map do |(grade1, grade2)|
+      case
+        when grade2 > grade1
+          :up
+        when grade2 < grade1
+          :down
+        else
+          :even
+      end
     end
-
-    results
   end
 
   def trend(entries)
